@@ -1,0 +1,4 @@
+mvn install:install-file -Dfile=E:\Projects\GAdmin\src\main\lib\json.jar -DgroupId=org.json -DartifactId=json -Dversion=1.0 -Dpackaging=jar
+
+
+mvn install:install-file -Dfile=E:\Projects\GAdmin\src\main\lib\ueditor-1.1.2.jar -DgroupId=com.baidu -DartifactId=ueditor -Dversion=1.4.3 -Dpackaging=jar

@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.hot.admin.mapper.UsersMapper" >
+  <resultMap id="BaseResultMap" type="cn.hot.admin.model.Users" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="code" property="code" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="nick" property="nick" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="pwd_encrypt" property="pwdEncrypt" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="card_type" property="cardType" jdbcType="VARCHAR" />
+    <result column="card_no" property="cardNo" jdbcType="VARCHAR" />
+    <result column="qq" property="qq" jdbcType="VARCHAR" />
+    <result column="openid" property="openid" jdbcType="VARCHAR" />
+    <result column="head_image" property="headImage" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="app_key" property="appKey" jdbcType="VARCHAR" />
+    <result column="user_from" property="userFrom" jdbcType="VARCHAR" />
+    <result column="shared_revenue_type" property="sharedRevenueType" jdbcType="VARCHAR" />
+    <result column="shared_revenue_rate" property="sharedRevenueRate" jdbcType="INTEGER" />
+    <result column="pay_type" property="payType" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="add_time" property="addTime" jdbcType="VARCHAR" />
+    <result column="add_user" property="addUser" jdbcType="BIGINT" />
+    <result column="update_time" property="updateTime" jdbcType="VARCHAR" />
+    <result column="update_user" property="updateUser" jdbcType="BIGINT" />
+    <result column="balance" property="balance" jdbcType="BIGINT" />
+    <result column="attr0" property="attr0" jdbcType="VARCHAR" />
+    <result column="attr1" property="attr1" jdbcType="VARCHAR" />
+    <result column="attr2" property="attr2" jdbcType="VARCHAR" />
+    <result column="attr3" property="attr3" jdbcType="VARCHAR" />
+    <result column="attr4" property="attr4" jdbcType="VARCHAR" />
+    <result column="attr5" property="attr5" jdbcType="VARCHAR" />
+    <result column="attr6" property="attr6" jdbcType="VARCHAR" />
+    <result column="attr7" property="attr7" jdbcType="VARCHAR" />
+    <result column="attr8" property="attr8" jdbcType="VARCHAR" />
+    <result column="attr9" property="attr9" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, account, code, name, nick, password, pwd_encrypt, sex, phone, email, card_type, 
+    card_no, qq, openid, head_image, flag, type, app_key, user_from, shared_revenue_type, 
+    shared_revenue_rate, pay_type, parent_id, add_time, add_user, update_time, update_user, 
+    balance, attr0, attr1, attr2, attr3, attr4, attr5, attr6, attr7, attr8, attr9
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.hot.admin.model.UsersExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.hot.admin.model.UsersExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.hot.admin.model.Users" >
+    insert into user (id, account, code, 
+      name, nick, password, 
+      pwd_encrypt, sex, phone, 
+      email, card_type, card_no, 
+      qq, openid, head_image, 
+      flag, type, app_key, 
+      user_from, shared_revenue_type, shared_revenue_rate, 
+      pay_type, parent_id, add_time, 
+      add_user, update_time, update_user, 
+      balance, attr0, attr1, 
+      attr2, attr3, attr4, 
+      attr5, attr6, attr7, 
+      attr8, attr9)
+    values (#{id,jdbcType=BIGINT}, #{account,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{nick,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{pwdEncrypt,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{cardType,jdbcType=VARCHAR}, #{cardNo,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{openid,jdbcType=VARCHAR}, #{headImage,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{appKey,jdbcType=VARCHAR}, 
+      #{userFrom,jdbcType=VARCHAR}, #{sharedRevenueType,jdbcType=VARCHAR}, #{sharedRevenueRate,jdbcType=INTEGER}, 
+      #{payType,jdbcType=VARCHAR}, #{parentId,jdbcType=BIGINT}, #{addTime,jdbcType=VARCHAR}, 
+      #{addUser,jdbcType=BIGINT}, #{updateTime,jdbcType=VARCHAR}, #{updateUser,jdbcType=BIGINT}, 
+      #{balance,jdbcType=BIGINT}, #{attr0,jdbcType=VARCHAR}, #{attr1,jdbcType=VARCHAR}, 
+      #{attr2,jdbcType=VARCHAR}, #{attr3,jdbcType=VARCHAR}, #{attr4,jdbcType=VARCHAR}, 
+      #{attr5,jdbcType=VARCHAR}, #{attr6,jdbcType=VARCHAR}, #{attr7,jdbcType=VARCHAR}, 
+      #{attr8,jdbcType=VARCHAR}, #{attr9,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.hot.admin.model.Users" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="code != null" >
+        code,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="nick != null" >
+        nick,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="pwdEncrypt != null" >
+        pwd_encrypt,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="cardType != null" >
+        card_type,
+      </if>
+      <if test="cardNo != null" >
+        card_no,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="openid != null" >
+        openid,
+      </if>
+      <if test="headImage != null" >
+        head_image,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="appKey != null" >
+        app_key,
+      </if>
+      <if test="userFrom != null" >
+        user_from,
+      </if>
+      <if test="sharedRevenueType != null" >
+        shared_revenue_type,
+      </if>
+      <if test="sharedRevenueRate != null" >
+        shared_revenue_rate,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="addUser != null" >
+        add_user,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="updateUser != null" >
+        update_user,
+      </if>
+      <if test="balance != null" >
+        balance,
+      </if>
+      <if test="attr0 != null" >
+        attr0,
+      </if>
+      <if test="attr1 != null" >
+        attr1,
+      </if>
+      <if test="attr2 != null" >
+        attr2,
+      </if>
+      <if test="attr3 != null" >
+        attr3,
+      </if>
+      <if test="attr4 != null" >
+        attr4,
+      </if>
+      <if test="attr5 != null" >
+        attr5,
+      </if>
+      <if test="attr6 != null" >
+        attr6,
+      </if>
+      <if test="attr7 != null" >
+        attr7,
+      </if>
+      <if test="attr8 != null" >
+        attr8,
+      </if>
+      <if test="attr9 != null" >
+        attr9,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nick != null" >
+        #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdEncrypt != null" >
+        #{pwdEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null" >
+        #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null" >
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userFrom != null" >
+        #{userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="sharedRevenueType != null" >
+        #{sharedRevenueType,jdbcType=VARCHAR},
+      </if>
+      <if test="sharedRevenueRate != null" >
+        #{sharedRevenueRate,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="addUser != null" >
+        #{addUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="attr0 != null" >
+        #{attr0,jdbcType=VARCHAR},
+      </if>
+      <if test="attr1 != null" >
+        #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        #{attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="attr7 != null" >
+        #{attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="attr8 != null" >
+        #{attr8,jdbcType=VARCHAR},
+      </if>
+      <if test="attr9 != null" >
+        #{attr9,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.hot.admin.model.UsersExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.code != null" >
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nick != null" >
+        nick = #{record.nick,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pwdEncrypt != null" >
+        pwd_encrypt = #{record.pwdEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardType != null" >
+        card_type = #{record.cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardNo != null" >
+        card_no = #{record.cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.openid != null" >
+        openid = #{record.openid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headImage != null" >
+        head_image = #{record.headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.flag != null" >
+        flag = #{record.flag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appKey != null" >
+        app_key = #{record.appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userFrom != null" >
+        user_from = #{record.userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sharedRevenueType != null" >
+        shared_revenue_type = #{record.sharedRevenueType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sharedRevenueRate != null" >
+        shared_revenue_rate = #{record.sharedRevenueRate,jdbcType=INTEGER},
+      </if>
+      <if test="record.payType != null" >
+        pay_type = #{record.payType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentId != null" >
+        parent_id = #{record.parentId,jdbcType=BIGINT},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addUser != null" >
+        add_user = #{record.addUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateUser != null" >
+        update_user = #{record.updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="record.balance != null" >
+        balance = #{record.balance,jdbcType=BIGINT},
+      </if>
+      <if test="record.attr0 != null" >
+        attr0 = #{record.attr0,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr1 != null" >
+        attr1 = #{record.attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr2 != null" >
+        attr2 = #{record.attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr3 != null" >
+        attr3 = #{record.attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr4 != null" >
+        attr4 = #{record.attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr5 != null" >
+        attr5 = #{record.attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr6 != null" >
+        attr6 = #{record.attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr7 != null" >
+        attr7 = #{record.attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr8 != null" >
+        attr8 = #{record.attr8,jdbcType=VARCHAR},
+      </if>
+      <if test="record.attr9 != null" >
+        attr9 = #{record.attr9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set id = #{record.id,jdbcType=BIGINT},
+      account = #{record.account,jdbcType=VARCHAR},
+      code = #{record.code,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      nick = #{record.nick,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      pwd_encrypt = #{record.pwdEncrypt,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      card_type = #{record.cardType,jdbcType=VARCHAR},
+      card_no = #{record.cardNo,jdbcType=VARCHAR},
+      qq = #{record.qq,jdbcType=VARCHAR},
+      openid = #{record.openid,jdbcType=VARCHAR},
+      head_image = #{record.headImage,jdbcType=VARCHAR},
+      flag = #{record.flag,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=VARCHAR},
+      app_key = #{record.appKey,jdbcType=VARCHAR},
+      user_from = #{record.userFrom,jdbcType=VARCHAR},
+      shared_revenue_type = #{record.sharedRevenueType,jdbcType=VARCHAR},
+      shared_revenue_rate = #{record.sharedRevenueRate,jdbcType=INTEGER},
+      pay_type = #{record.payType,jdbcType=VARCHAR},
+      parent_id = #{record.parentId,jdbcType=BIGINT},
+      add_time = #{record.addTime,jdbcType=VARCHAR},
+      add_user = #{record.addUser,jdbcType=BIGINT},
+      update_time = #{record.updateTime,jdbcType=VARCHAR},
+      update_user = #{record.updateUser,jdbcType=BIGINT},
+      balance = #{record.balance,jdbcType=BIGINT},
+      attr0 = #{record.attr0,jdbcType=VARCHAR},
+      attr1 = #{record.attr1,jdbcType=VARCHAR},
+      attr2 = #{record.attr2,jdbcType=VARCHAR},
+      attr3 = #{record.attr3,jdbcType=VARCHAR},
+      attr4 = #{record.attr4,jdbcType=VARCHAR},
+      attr5 = #{record.attr5,jdbcType=VARCHAR},
+      attr6 = #{record.attr6,jdbcType=VARCHAR},
+      attr7 = #{record.attr7,jdbcType=VARCHAR},
+      attr8 = #{record.attr8,jdbcType=VARCHAR},
+      attr9 = #{record.attr9,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.hot.admin.model.Users" >
+    update user
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="nick != null" >
+        nick = #{nick,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="pwdEncrypt != null" >
+        pwd_encrypt = #{pwdEncrypt,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null" >
+        card_type = #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="cardNo != null" >
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null" >
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="headImage != null" >
+        head_image = #{headImage,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null" >
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="userFrom != null" >
+        user_from = #{userFrom,jdbcType=VARCHAR},
+      </if>
+      <if test="sharedRevenueType != null" >
+        shared_revenue_type = #{sharedRevenueType,jdbcType=VARCHAR},
+      </if>
+      <if test="sharedRevenueRate != null" >
+        shared_revenue_rate = #{sharedRevenueRate,jdbcType=INTEGER},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=VARCHAR},
+      </if>
+      <if test="addUser != null" >
+        add_user = #{addUser,jdbcType=BIGINT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateUser != null" >
+        update_user = #{updateUser,jdbcType=BIGINT},
+      </if>
+      <if test="balance != null" >
+        balance = #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="attr0 != null" >
+        attr0 = #{attr0,jdbcType=VARCHAR},
+      </if>
+      <if test="attr1 != null" >
+        attr1 = #{attr1,jdbcType=VARCHAR},
+      </if>
+      <if test="attr2 != null" >
+        attr2 = #{attr2,jdbcType=VARCHAR},
+      </if>
+      <if test="attr3 != null" >
+        attr3 = #{attr3,jdbcType=VARCHAR},
+      </if>
+      <if test="attr4 != null" >
+        attr4 = #{attr4,jdbcType=VARCHAR},
+      </if>
+      <if test="attr5 != null" >
+        attr5 = #{attr5,jdbcType=VARCHAR},
+      </if>
+      <if test="attr6 != null" >
+        attr6 = #{attr6,jdbcType=VARCHAR},
+      </if>
+      <if test="attr7 != null" >
+        attr7 = #{attr7,jdbcType=VARCHAR},
+      </if>
+      <if test="attr8 != null" >
+        attr8 = #{attr8,jdbcType=VARCHAR},
+      </if>
+      <if test="attr9 != null" >
+        attr9 = #{attr9,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.hot.admin.model.Users" >
+    update user
+    set account = #{account,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      nick = #{nick,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      pwd_encrypt = #{pwdEncrypt,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=VARCHAR},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      head_image = #{headImage,jdbcType=VARCHAR},
+      flag = #{flag,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      user_from = #{userFrom,jdbcType=VARCHAR},
+      shared_revenue_type = #{sharedRevenueType,jdbcType=VARCHAR},
+      shared_revenue_rate = #{sharedRevenueRate,jdbcType=INTEGER},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      add_time = #{addTime,jdbcType=VARCHAR},
+      add_user = #{addUser,jdbcType=BIGINT},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      update_user = #{updateUser,jdbcType=BIGINT},
+      balance = #{balance,jdbcType=BIGINT},
+      attr0 = #{attr0,jdbcType=VARCHAR},
+      attr1 = #{attr1,jdbcType=VARCHAR},
+      attr2 = #{attr2,jdbcType=VARCHAR},
+      attr3 = #{attr3,jdbcType=VARCHAR},
+      attr4 = #{attr4,jdbcType=VARCHAR},
+      attr5 = #{attr5,jdbcType=VARCHAR},
+      attr6 = #{attr6,jdbcType=VARCHAR},
+      attr7 = #{attr7,jdbcType=VARCHAR},
+      attr8 = #{attr8,jdbcType=VARCHAR},
+      attr9 = #{attr9,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

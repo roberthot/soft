@@ -1,0 +1,295 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body,
+#app,
+.wrapper {
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+body {
+	font-family: 'PingFang SC', "Helvetica Neue", Helvetica, "microsoft yahei", arial, STHeiTi, sans-serif;
+}
+
+a {
+	text-decoration: none
+}
+
+.content-box {
+	position: absolute;
+	left: 200px;
+	right: 0;
+	top: 70px;
+	bottom: 0;
+	padding-bottom: 30px;
+	-webkit-transition: left .3s ease-in-out;
+	transition: left .3s ease-in-out;
+	background: #f0f0f0;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1156px) {
+	.content {
+		width: auto;
+		height: 100%;
+		padding: 0 8px 8px 8px;
+		overflow-y: auto;
+		overflow-x: auto;
+		box-sizing: border-box;
+	}
+	.content>div{
+		width:150%;
+	}
+}
+
+@media screen and (min-width: 1156px) and (max-width: 3500px) {
+	.content {
+		width: auto;
+		height: 100%;
+		padding: 0 8px 8px 8px;
+		overflow-y: auto;
+		overflow-x: auto;
+		box-sizing: border-box;
+	}	
+}
+
+.content-collapse {
+	left: 65px;
+}
+
+.container {
+	padding: 15px;
+	background: #fff;
+	border: 1px solid #ddd;
+}
+
+.crumbs {
+	/*margin: 10px 0;*/
+}
+
+.pagination {
+	margin: 20px 0;
+	text-align: right;
+}
+
+.plugins-tips {
+	padding: 20px 10px;
+	margin-bottom: 20px;
+}
+
+.el-button+.el-tooltip {
+	margin-left: 10px;
+}
+
+.el-table tr:hover {
+	background: #f6faff;
+}
+
+.mgb20 {
+	margin-bottom: 20px;
+}
+
+.move-enter-active,
+.move-leave-active {
+	transition: opacity .5s;
+}
+
+.move-enter,
+.move-leave {
+	opacity: 0;
+}
+
+
+/*BaseForm*/
+
+.form-box {
+	width: 600px;
+}
+
+.form-box .line {
+	text-align: center;
+}
+
+.el-time-panel__content::after,
+.el-time-panel__content::before {
+	margin-top: -7px;
+}
+
+.el-time-spinner__wrapper .el-scrollbar__wrap:not(.el-scrollbar__wrap--hidden-default) {
+	padding-bottom: 0;
+}
+
+
+/*Upload*/
+
+.pure-button {
+	width: 150px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #fff;
+}
+
+.g-core-image-corp-container .info-aside {
+	height: 45px;
+}
+
+.el-upload--text {
+	background-color: #fff;
+	border: 1px dashed #d9d9d9;
+	box-sizing: border-box;
+	width: 360px;
+	height: 180px;
+	text-align: center;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.el-upload--text .el-icon-upload {
+	font-size: 67px;
+	color: #97a8be;
+	margin: 40px 0 16px;
+	line-height: 50px;
+}
+
+.el-upload--text {
+	color: #97a8be;
+	font-size: 14px;
+	text-align: center;
+}
+
+.el-upload--text em {
+	font-style: normal;
+}
+
+
+/*VueEditor*/
+
+.ql-container {
+	min-height: 400px;
+}
+
+.ql-snow .ql-tooltip {
+	transform: translateX(117.5px) translateY(10px) !important;
+}
+
+.editor-btn {
+	margin-top: 20px;
+}
+
+
+/*markdown*/
+
+.v-note-wrapper .v-note-panel {
+	min-height: 500px;
+}
+
+
+.el-table{
+	overflow:visible !important;
+}
+/**/
+
+.el-dialog__header {
+	padding: 10px 20px 10px !important;
+	min-height: 24px !important;
+	background-color: #242f42;
+	color: white;
+}
+
+.el-dialog__body {
+	padding: 20px !important;
+	max-height:650px !important;
+	overflow-y: auto !important;
+}
+
+.el-dialog__title {
+	line-height: 24px !important;
+	font-size: 15px !important;
+	color: #ffffff !important;
+}
+
+.el-dialog__headerbtn .el-dialog__close {
+	color: #f9f9f9 !important;
+	padding-bottom: 10px !important;
+}
+
+.el-dialog__headerbtn {
+	top: 12px !important;
+}
+
+.icon-file+span {
+	padding-left: 30px;
+}
+
+
+/** form input css*/
+
+.el-input__inner {
+	border-radius: 0!important;
+}
+
+.el-button {
+	border-radius: 0!important;
+}
+
+
+/* upload */
+
+.el-upload-list {
+	display: inline-flex!important;
+}
+
+.el-upload-list--picture .el-upload-list__item {
+	padding: 0px 80px 0px 0px!important;
+	margin-top: 0!important;
+	height: 28px!important;
+	border-radius: 0px !important;
+}
+
+.el-upload-list--picture .el-upload-list__item-thumbnail {
+	width: 25px!important;
+	height: 25px!important;
+	margin-left: 0!important;
+}
+
+.el-upload-list--picture .el-upload-list__item.is-success .el-upload-list__item-name {
+	line-height: 27px!important;
+}
+
+.dateInput .el-input--small .el-input__inner {
+	height: 26px !important;
+	line-height: 26px !important;
+}
+
+.dateInput .el-input__inner {
+	background: rgba(23, 59, 123, .5) !important;
+	color: #61a5e4 !important;
+	border: none !important;
+	outline: none !important;
+	font-size: 14px !important;
+	line-height: 32px !important;
+	height: 32px !important;
+}
+
+.dateInput .el-icon-date:before {
+	content: "\E78E";
+	color: #61a5e4 !important;
+}
+
+.dateInput .el-input--small .el-input__icon {
+	line-height: 32px !important;
+	height: 32px !important;
+}
+
+.dateInput .el-input__inner::-webkit-input-placeholder {
+	/* placeholder颜色  */
+	color: #61a5e4;
+	/* placeholder字体大小  */
+	font-size: 14px;
+}
